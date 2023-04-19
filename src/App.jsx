@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import Users from './components/Users'
 
 function App() {
 
   return (
     <div>
-        OpenX intenship API task
+        <Users />
     </div>
   )
 }
