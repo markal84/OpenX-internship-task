@@ -17,7 +17,7 @@ export default function Carts() {
 
   return (
     <div>
-      <button type='button'>Show carts</button>
+      <button type='button'>Show / hide carts</button>
       {carts.map((cart) => {
         return (
           <div key={cart.id}>
