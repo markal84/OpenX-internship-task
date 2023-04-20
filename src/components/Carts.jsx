@@ -18,17 +18,20 @@ export default function Carts(props) {
     }
   });
 
+  console.log(highestCartOwner);
+
   return (
     <div>
       <div>
         <h3>Cart with highest value:</h3>
+        {highestCartOwner != ""
+          ? `${highestCartOwner.name.firstname} ${highestCartOwner.name.lastname}`
+          : "waiting for data"}
         <p>
-          <h4>
-            {highestCartOwner.name.firstname} {highestCartOwner.name.lastname}
-          </h4>
           <span>
             {" "}
-            with total sum of <h4>{highestTotal}</h4>
+            with total sum of{" "}
+            {highestTotal !== 0 ? `${highestTotal}` : "waiting for data"}
           </span>
         </p>
       </div>

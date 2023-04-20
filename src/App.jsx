@@ -32,8 +32,9 @@ function App() {
 
   return (
     <div>
-      {isLoading && <p>Loading data, please wait....</p>}
-      {!isLoading && (
+      {isLoading ? (
+        <p>Loading data, please wait....</p>
+      ) : (
         <div>
           <Users users={users} />
           <Carts carts={carts} users={users} products={products} />
