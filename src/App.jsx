@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Users from "./components/Users";
 import Carts from "./components/Carts";
 import Products from "./components/Products";
+import Footer from "./components/Footer";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -44,6 +45,7 @@ function App() {
           <Carts carts={carts} users={users} products={products} />
           <h3>Products section</h3>
           <Products products={products} />
+          <Footer />
         </div>
       )}
     </div>

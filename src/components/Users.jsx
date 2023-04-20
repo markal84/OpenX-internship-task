@@ -48,9 +48,8 @@ export default function Users(props) {
       <p>
         {" "}
         Users living farthest away:{" "}
-        <span className="bold">
-          {maxUsersDistance[0]} and {maxUsersDistance[1]}
-        </span>
+        <span className="bold">{maxUsersDistance[0]}</span> and{" "}
+        <span className="bold">{maxUsersDistance[1]}</span>
       </p>
       <p>
         {" "}
