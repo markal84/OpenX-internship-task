@@ -40,23 +40,22 @@ export default function Users(props) {
   }
 
   return (
-    <div>
+    <section className="Section">
       <p>
-        Users living farthest away are: {maxUsersDistance[0]} and{" "}
-        {maxUsersDistance[1]}
-        <span> with distance: {maxDistance.toFixed(0)}</span>
+        Total users: <span className="bold">{users.length}</span>
       </p>
-      <button type="button">Show / hide users</button>
-      {users.map((user) => {
-        const { username, email, id } = user;
-        const { firstname, lastname } = user.name;
-
-        return (
-          <div key={id}>
-            <p>users</p>
-          </div>
-        );
-      })}
-    </div>
+      <br></br>
+      <p>
+        {" "}
+        Users living farthest away:{" "}
+        <span className="bold">
+          {maxUsersDistance[0]} and {maxUsersDistance[1]}
+        </span>
+      </p>
+      <p>
+        {" "}
+        with distance: <span className="bold">{maxDistance.toFixed(0)}km</span>
+      </p>
+    </section>
   );
 }

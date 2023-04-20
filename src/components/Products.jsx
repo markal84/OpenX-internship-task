@@ -18,7 +18,7 @@ export default function Products(props) {
   }));
 
   return (
-    <div>
+    <section className="Section">
       Products categories
       <ul>
         {categoriesArr.map((categories, idx) => {
@@ -26,14 +26,13 @@ export default function Products(props) {
           return (
             <li key={idx}>
               <p>
-                Category:&nbsp;
-                <span>{category},</span>&nbsp; Total value:&nbsp;
-                <span>{totalValue.toFixed(2)}</span>&nbsp;
+                Category: <span className="bold">{category},</span> Total value:{" "}
+                <span className="bold">{totalValue.toFixed(2)}</span>
               </p>
             </li>
           );
         })}
       </ul>
-    </div>
+    </section>
   );
 }

@@ -1,5 +1,8 @@
+import { useState } from "react";
+
 export default function Carts(props) {
   const { carts, users, products } = props;
+  const [isShow, setIsShow] = useState(false);
 
   let highestTotal = 0;
   let highestCartOwner = "";
@@ -18,28 +21,35 @@ export default function Carts(props) {
     }
   });
 
-  console.log(highestCartOwner);
-
   return (
-    <div>
+    <section className="Section">
       <div>
-        <h3>Cart with highest value:</h3>
-        {highestCartOwner != ""
-          ? `${highestCartOwner.name.firstname} ${highestCartOwner.name.lastname}`
-          : "waiting for data"}
+        <p>Cart with the highest value:</p>
+        User:&nbsp;
+        <span className="bold">
+          {highestCartOwner != ""
+            ? `${highestCartOwner.name.firstname} ${highestCartOwner.name.lastname}`
+            : "waiting for data"}
+        </span>
         <p>
-          <span>
-            {" "}
-            with total sum of{" "}
+          with total sum of:{" "}
+          <span className="bold">
             {highestTotal !== 0 ? `${highestTotal}` : "waiting for data"}
           </span>
         </p>
       </div>
-      <button type="button">Show / hide orders</button>
+      <button type="button" onClick={() => setIsShow((isShow) => !isShow)}>
+        {isShow ? "hide" : "show"} orders
+      </button>
       {carts.map((cart) => {
         const user = users.find((user) => user.id === cart.userId);
         return (
-          <div key={cart.id}>
+          <ul
+            key={cart.id}
+            style={{
+              display: isShow ? "block" : "none",
+            }}
+          >
             <h4>
               {user.name.firstname} {user.name.lastname} order
             </h4>
@@ -54,9 +64,9 @@ export default function Carts(props) {
                 </li>
               );
             })}
-          </div>
+          </ul>
         );
       })}
-    </div>
+    </section>
   );
 }

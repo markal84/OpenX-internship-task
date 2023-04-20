@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import fetchData from "./helpers/fetchData";
 import { usersUrl, cartsUrl, productsUrl } from "./globals/apisURL";
+import Header from "./components/Header";
 import Users from "./components/Users";
 import Carts from "./components/Carts";
 import Products from "./components/Products";
@@ -31,13 +32,17 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div className="App">
       {isLoading ? (
         <p>Loading data, please wait....</p>
       ) : (
         <div>
+          <Header />
+          <h3>Users section</h3>
           <Users users={users} />
+          <h3>Carts section</h3>
           <Carts carts={carts} users={users} products={products} />
+          <h3>Products section</h3>
           <Products products={products} />
         </div>
       )}
