@@ -1,23 +1,14 @@
-import { useState, useEffect } from 'react'
-import fetchData from '../helpers/fetchData'
-import { cartsUrl } from '../globals/apisURL'
-
-export default function Carts() {
-  const [carts, setCarts] = useState([])
-
-  useEffect(() => {
-    fetchData(cartsUrl)
-      .then((res) => {
-        setCarts(res)
-      })
-      .catch((error) => {
-        console.log(error.message);
-      })
-  }, [])
+export default function Carts(props) {
+  const { carts } = props
 
   return (
     <div>
       <button type='button'>Show / hide carts</button>
+    </div>
+  )
+}
+
+/*
       {carts.map((cart) => {
         return (
           <div key={cart.id}>
@@ -30,6 +21,4 @@ export default function Carts() {
           </div>
         )
       })}
-    </div>
-  )
-}
+*/

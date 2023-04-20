@@ -1,19 +1,5 @@
-import { useState, useEffect } from 'react'
-import fetchData from '../helpers/fetchData'
-import { usersUrl } from '../globals/apisURL'
-
-export default function Users() {
-  const [users, setUsers] = useState([])
-
-  useEffect(() => {
-    fetchData(usersUrl)
-      .then((res) => {
-        setUsers(res)
-      })
-      .catch((error) => {
-        console.log(error.message)
-      })
-  }, [])
+export default function Users(props) {
+  const { users } = props;
 
   function getDistance(lat1, lon1, lat2, lon2) {
     const dLat = (lat2 - lat1) * (Math.PI / 180)
@@ -34,29 +20,29 @@ export default function Users() {
   let maxDistance = 0
   let maxUsersDistance = []
 
-    for (let i = 0; i < users.length; i++) {
-      for (let j = i + 1; j < users.length; j++) {
-        const user1 = users[i];
-        const user2 = users[j];
-        const distance = getDistance(
-          user1.address.geolocation.lat,
-          user1.address.geolocation.long,
-          user2.address.geolocation.lat,
-          user2.address.geolocation.long
-        )
-        // console.log(`Distance between ${user1.username} and ${user2.username}: ${distance}`)
-        if (distance > maxDistance) {
-          maxDistance = distance;
-          maxUsersDistance = [user1.username, user2.username]
-        }
+  for (let i = 0; i < users.length; i++) {
+    for (let j = i + 1; j < users.length; j++) {
+      const user1 = users[i];
+      const user2 = users[j];
+      const distance = getDistance(
+        user1.address.geolocation.lat,
+        user1.address.geolocation.long,
+        user2.address.geolocation.lat,
+        user2.address.geolocation.long
+      )
+      // console.log(`Distance between ${user1.username} and ${user2.username}: ${distance}`)
+      if (distance > maxDistance) {
+        maxDistance = distance;
+        maxUsersDistance = [user1.username, user2.username]
       }
     }
+  }
 
   return (
     <div>
       <p>
         Users living farthest away are: {maxUsersDistance[0]} and {maxUsersDistance[1]}
-        <span>with distance: {maxDistance.toFixed(0)}</span>
+        <span> with distance: {maxDistance.toFixed(0)}</span>
       </p>
       <button type='button'>Show / hide users</button>
       {users.map((user) => {
