@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import fetchData from "./helpers/fetchData";
-import { usersUrl, cartsUrl, productsUrl } from "./globals/apisURL";
+import { USERS_URL, CARTS_URL, PRODUCTS_URL } from "./globals/apisURL";
 import Header from "./components/Header";
 import Users from "./components/Users";
 import Carts from "./components/Carts";
@@ -17,9 +17,9 @@ function App() {
     setIsLoading(true);
 
     Promise.all([
-      fetchData(usersUrl),
-      fetchData(cartsUrl),
-      fetchData(productsUrl),
+      fetchData(USERS_URL),
+      fetchData(CARTS_URL),
+      fetchData(PRODUCTS_URL),
     ])
       .then(([users, carts, products]) => {
         setUsers(users);
