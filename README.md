@@ -4,7 +4,7 @@
 
 ### Link for [live version](https://markal84.github.io/OpenX-internship-task/)
 
-In case if page won't load, please check if your security software is not blocking loading page resources.
+In case of page won't load, please check if your security software is not blocking loading page resources.
 
 Subtask: solution file
 1. Retrieves user, product and shopping cart data: **./src/App.jsx**
